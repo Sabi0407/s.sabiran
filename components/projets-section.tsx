@@ -164,6 +164,30 @@ const categories = [
         tags: ["Sauvegarde", "Backup", "Protection", "Sécurité", "Linux"],
         pdf: "/portfolio/docs/tp-sauvegarde-protection.pdf",
       },
+      {
+        title: "Sauvegarde Linux - Partie 1",
+        desc: "Mise en place de solutions de sauvegarde sur Linux : utilisation de rsync pour la synchronisation, création de sauvegardes incrémentales et configuration de tâches automatisées.",
+        tags: ["Sauvegarde", "Rsync", "Linux", "Automatisation", "Backup"],
+        pdf: "/portfolio/docs/tp-sauvegarde-linux-p1.pdf",
+      },
+      {
+        title: "Configuration SSH et chiffrage",
+        desc: "Configuration avancée du serveur SSH pour l'administration à distance sécurisée : authentification par clés, désactivation du mot de passe root, configuration du chiffrage et sécurisation des connexions.",
+        tags: ["SSH", "Chiffrage", "Sécurité", "Authentification", "Linux"],
+        pdf: "/portfolio/docs/tp-ssh-chiffrage.pdf",
+      },
+      {
+        title: "PowerShell - Partie 1",
+        desc: "Introduction à PowerShell et automatisation sous Windows : scripts de base, manipulation d'objets, cmdlets essentielles et automatisation de tâches d'administration système.",
+        tags: ["PowerShell", "Windows", "Scripting", "Automatisation", "Administration"],
+        pdf: "/portfolio/docs/tp-powershell-1.pdf",
+      },
+      {
+        title: "PowerShell - Partie 2",
+        desc: "PowerShell avancé : gestion d'Active Directory, manipulation de fichiers, création de scripts complexes et automatisation de tâches administratives sur Windows Server.",
+        tags: ["PowerShell", "Active Directory", "Scripting", "Windows Server", "Automatisation"],
+        pdf: "/portfolio/docs/tp-powershell-2.pdf",
+      },
     ] as Project[],
   },
   {
@@ -226,58 +250,99 @@ const categories = [
 ]
 
 function ProjectCard({ project }: { project: Project }) {
+  const [showModal, setShowModal] = useState(false)
+
   return (
-    <div className="group flex flex-col rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/40 hover:shadow-lg">
-      <h3 className="mb-2 font-heading text-base font-bold text-foreground">{project.title}</h3>
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">{project.desc}</p>
-      <div className="mb-4 flex flex-wrap gap-1.5">
-        {project.tags.map((tag) => (
-          <span key={tag} className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-            {tag}
-          </span>
-        ))}
-      </div>
-      <div className="flex flex-wrap items-center gap-3 border-t border-border pt-4">
-        {project.pdf ? (
-          <>
+    <>
+      <div className="group flex flex-col rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/40 hover:shadow-lg">
+        <h3 className="mb-2 font-heading text-base font-bold text-foreground">{project.title}</h3>
+        <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">{project.desc}</p>
+        <div className="mb-4 flex flex-wrap gap-1.5">
+          {project.tags.map((tag) => (
+            <span key={tag} className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="flex flex-wrap items-center gap-2 border-t border-border pt-4">
+          {project.pdf ? (
+            <>
+              <button
+                onClick={() => setShowModal(true)}
+                className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-transform hover:scale-105"
+              >
+                <ExternalLink size={14} />
+                Prévisualiser
+              </button>
+              {!project.pdf.startsWith('http') && (
+                <a
+                  href={project.pdf}
+                  download
+                  className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-transform hover:scale-105"
+                >
+                  <Download size={14} />
+                  Télécharger
+                </a>
+              )}
+            </>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground">
+              Documentation à venir
+            </span>
+          )}
+          {project.github && (
             <a
-              href={project.pdf}
+              href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-transform hover:scale-105"
+              className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-transform hover:scale-105"
             >
-              <ExternalLink size={14} />
-              Voir la doc
+              <Github size={14} />
+              GitHub
             </a>
-            {!project.pdf.startsWith('http') && (
-              <a
-                href={project.pdf}
-                download
-                className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-transform hover:scale-105"
-              >
-                <Download size={14} />
-                Télécharger
-              </a>
-            )}
-          </>
-        ) : (
-          <span className="inline-flex items-center gap-1.5 rounded-md bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground">
-            Documentation à venir
-          </span>
-        )}
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-transform hover:scale-105"
-          >
-            <Github size={14} />
-            GitHub
-          </a>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+
+      {showModal && project.pdf && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setShowModal(false)}
+        >
+          <div 
+            className="relative h-full w-full max-w-6xl overflow-hidden rounded-xl bg-background shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-border bg-card p-4">
+              <h3 className="font-heading text-lg font-bold text-foreground">{project.title}</h3>
+              <div className="flex items-center gap-2">
+                {!project.pdf.startsWith('http') && (
+                  <a
+                    href={project.pdf}
+                    download
+                    className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-transform hover:scale-105"
+                  >
+                    <Download size={14} />
+                    Télécharger
+                  </a>
+                )}
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            <iframe
+              src={project.pdf}
+              className="h-[calc(100%-4rem)] w-full"
+              title={project.title}
+            />
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

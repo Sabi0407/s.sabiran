@@ -6,57 +6,57 @@ const skills = [
     icon: Monitor,
     title: "Systèmes d'exploitation",
     subtitle: "Windows / Linux",
-    tags: ["Windows Server 2016/2019/2022", "Debian 11/12", "Ubuntu Server", "Active Directory", "GPO", "DHCP/DNS"],
+    tags: ["Windows Server", "Windows 10/11", "Debian", "Ubuntu Server", "Active Directory", "GPO"],
   },
   {
     icon: Container,
     title: "Virtualisation & Conteneurisation",
-    subtitle: "Proxmox / Docker",
-    tags: ["Proxmox VE", "VirtualBox", "Docker", "Gestion des VMs", "Snapshots"],
+    subtitle: "Hyperviseurs / Conteneurs",
+    tags: ["Proxmox VE", "Proxmox Backup Server", "VirtualBox", "LXC", "Docker", "Gestion des VMs"],
   },
   {
     icon: Globe,
     title: "Services & Applications",
-    subtitle: "Web / Base de données",
-    tags: ["Apache2", "OpenSSL/TLS", "SSH", "GLPI", "Zabbix", "MariaDB", "MySQL"],
+    subtitle: "Infrastructure IT",
+    tags: ["Apache", "GLPI", "Samba", "Alcasar", "Entra ID", "Intune", "DHCP/DNS"],
   },
   {
     icon: ShieldCheck,
     title: "Sécurité & Supervision",
-    subtitle: "Monitoring / Sécurisation",
-    tags: ["Zabbix Monitoring", "Gestion des sauvegardes", "Sécurisation SSH", "Certificats SSL/TLS", "Analyse de logs"],
+    subtitle: "Monitoring / Protection",
+    tags: ["Zabbix", "Tailscale VPN", "Pare-feu", "Sauvegardes", "SSL/TLS", "SSH"],
   },
 ]
 
 export default function CompetencesSection() {
   return (
-    <section id="competences" className="py-24 px-6 bg-card">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="font-heading text-3xl font-bold text-foreground text-center mb-4">Compétences</h2>
-        <div className="mx-auto mb-12 h-1 w-16 rounded-full bg-primary" />
+    <section id="competences" className="py-20 px-6 bg-card">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="font-heading text-3xl font-bold text-foreground text-center mb-3">Compétences</h2>
+        <div className="mx-auto mb-10 h-1 w-16 rounded-full bg-primary" />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-10">
           {skills.map((skill) => {
             const Icon = skill.icon
             return (
               <div
                 key={skill.title}
-                className="group rounded-xl border border-border bg-background p-6 transition-all hover:border-primary/40 hover:shadow-lg"
+                className="group rounded-xl border border-border bg-background p-5 transition-all hover:border-primary/40 hover:shadow-lg"
               >
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                    <Icon size={20} />
+                <div className="mb-3 flex items-center gap-2.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                    <Icon size={18} />
                   </div>
-                  <div>
-                    <h3 className="font-heading text-sm font-bold text-foreground">{skill.title}</h3>
-                    <p className="text-xs text-muted-foreground">{skill.subtitle}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-heading text-sm font-bold text-foreground truncate">{skill.title}</h3>
+                    <p className="text-xs text-muted-foreground truncate">{skill.subtitle}</p>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {skill.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground"
+                      className="rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground"
                     >
                       {tag}
                     </span>
@@ -67,9 +67,9 @@ export default function CompetencesSection() {
           })}
         </div>
 
-        <div className="mt-12">
-          <p className="text-center text-sm text-muted-foreground mb-4">Documents</p>
-          <div className="grid gap-3 sm:grid-cols-2 max-w-2xl mx-auto">
+        <div className="border-t border-border pt-8">
+          <p className="text-center text-sm font-medium text-muted-foreground mb-4">Documents</p>
+          <div className="grid gap-3 sm:grid-cols-2 max-w-3xl mx-auto">
             <PDFPreview 
               pdfUrl="/portfolio/CV_SRIKANTHAN_Sabiran.pdf" 
               title="Mon CV"
