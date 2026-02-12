@@ -8,7 +8,7 @@ export default function ContactSection() {
         <h2 className="font-heading text-3xl font-bold text-foreground mb-4">Contact</h2>
         <div className="mx-auto mb-8 h-1 w-16 rounded-full bg-primary" />
         <p className="mb-8 text-muted-foreground">
-          {"Retrouvez-moi sur mes reseaux professionnels"}
+          Retrouvez-moi sur mes réseaux professionnels
         </p>
 
         <div className="flex items-center justify-center gap-4">
@@ -47,13 +47,12 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="mx-auto mt-16 max-w-5xl border-t border-border pt-8">
         <div className="flex items-center justify-center gap-4 mb-6">
           <ThemeToggle />
         </div>
         <p className="text-sm text-muted-foreground text-center">
-          {"© 2026 SRIKANTHAN Sabiran - Portfolio BTS SIO SISR"}
+          © 2026 SRIKANTHAN Sabiran - Portfolio BTS SIO SISR
         </p>
       </div>
     </section>

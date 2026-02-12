@@ -19,26 +19,26 @@ const categories = [
     projects: [
       {
         title: "Mise en place d'Arch Linux avec environnement de bureau",
-        desc: "Installation complete d'Arch Linux : configuration du terminal, disposition clavier francais, partitionnement manuel des disques, installation du systeme de base et deploiement d'un environnement de bureau fonctionnel.",
+        desc: "Installation complète d'Arch Linux : configuration du terminal, disposition clavier français, partitionnement manuel des disques, installation du système de base et déploiement d'un environnement de bureau fonctionnel.",
         tags: ["Arch Linux", "Linux", "Terminal", "Partitionnement", "DE"],
         pdf: "/portfolio/docs/installation-arch-linux.pdf",
       },
       {
         title: "Mise en place d'un serveur Samba et de Tailscale",
-        desc: "Installation et configuration d'un serveur Samba pour le partage de fichiers reseau et deploiement de Tailscale pour un VPN mesh securise permettant un acces distant aux ressources internes.",
-        tags: ["Samba", "Tailscale", "VPN", "Partage de fichiers", "Reseau"],
+        desc: "Installation et configuration d'un serveur Samba pour le partage de fichiers réseau et déploiement de Tailscale pour un VPN mesh sécurisé permettant un accès distant aux ressources internes.",
+        tags: ["Samba", "Tailscale", "VPN", "Partage de fichiers", "Réseau"],
         pdf: "",
       },
       {
         title: "Mise en place de Jellyfin",
-        desc: "Deploiement et configuration de Jellyfin, un serveur multimedia open-source pour le streaming de contenus video, audio et photo avec gestion de bibliotheques et transcodage.",
-        tags: ["Jellyfin", "Streaming", "Multimedia", "Serveur", "Media"],
+        desc: "Déploiement et configuration de Jellyfin, un serveur multimédia open-source pour le streaming de contenus vidéo, audio et photo avec gestion de bibliothèques et transcodage.",
+        tags: ["Jellyfin", "Streaming", "Multimédia", "Serveur", "Media"],
         pdf: "",
       },
       {
         title: "Mise en place de Glance",
-        desc: "Installation et configuration de Glance, un tableau de bord de supervision pour la surveillance et l'affichage centralise des metriques systeme et services en temps reel.",
-        tags: ["Glance", "Dashboard", "Supervision", "Monitoring", "Metriques"],
+        desc: "Installation et configuration de Glance, un tableau de bord de supervision pour la surveillance et l'affichage centralisé des métriques système et services en temps réel.",
+        tags: ["Glance", "Dashboard", "Supervision", "Monitoring", "Métriques"],
         pdf: "",
       },
     ] as Project[],
@@ -50,7 +50,7 @@ const categories = [
     projects: [
       {
         title: "Support informatique N1 - Groupe Bertrand",
-        desc: "Gestion des tickets d'incidents, assistance aux utilisateurs, maintenance du parc informatique, deploiement de postes et resolution de problemes materiels/logiciels.",
+        desc: "Gestion des tickets d'incidents, assistance aux utilisateurs, maintenance du parc informatique, déploiement de postes et résolution de problèmes matériels/logiciels.",
         tags: ["GLPI", "Active Directory", "Windows", "Ticketing", "Support"],
         pdf: "",
       },
@@ -63,44 +63,44 @@ const categories = [
     projects: [
       {
         title: "Mise en place d'ALCASAR",
-        desc: "Installation et configuration complete du portail captif ALCASAR pour le filtrage et l'authentification reseau. Deploiement de l'infrastructure de base pour controler l'acces internet.",
-        tags: ["ALCASAR", "Portail captif", "Installation", "Configuration", "Reseau"],
+        desc: "Installation et configuration complète du portail captif ALCASAR pour le filtrage et l'authentification réseau. Déploiement de l'infrastructure de base pour contrôler l'accès internet.",
+        tags: ["ALCASAR", "Portail captif", "Installation", "Configuration", "Réseau"],
         pdf: "/portfolio/docs/stage-alcasar-mise-en-place.pdf",
       },
       {
-        title: "Configuration du point d'acces WiFi pour ALCASAR",
-        desc: "Configuration complete d'un point d'acces WiFi pour integration avec le portail captif ALCASAR. Parametrage materiel reseau, configuration SSID, securisation WPA2 et mise en place de la connexion sans fil.",
-        tags: ["WiFi", "Point d'acces", "Configuration", "Reseau", "ALCASAR"],
+        title: "Configuration du point d'accès WiFi pour ALCASAR",
+        desc: "Configuration complète d'un point d'accès WiFi pour intégration avec le portail captif ALCASAR. Paramétrage matériel réseau, configuration SSID, sécurisation WPA2 et mise en place de la connexion sans fil.",
+        tags: ["WiFi", "Point d'accès", "Configuration", "Réseau", "ALCASAR"],
         pdf: "/portfolio/docs/stage-configuration-point-acces.pdf",
       },
       {
-        title: "Configuration et debogage du serveur DNS Unbound",
-        desc: "Configuration avancee du serveur DNS Unbound pour forcer SafeSearch sur Google, Bing et YouTube. Resolution de conflits, gestion des local-zones, optimisation des performances et mise en place du filtrage DNS.",
-        tags: ["Unbound", "DNS", "SafeSearch", "Filtrage", "Debug"],
+        title: "Configuration et débogage du serveur DNS Unbound",
+        desc: "Configuration avancée du serveur DNS Unbound pour forcer SafeSearch sur Google, Bing et YouTube. Résolution de conflits, gestion des local-zones, optimisation des performances et mise en place du filtrage DNS.",
+        tags: ["Unbound", "DNS", "SafeSearch", "Filtrage", "Débogage"],
         pdf: "/portfolio/docs/stage-unbound-alcasar.pdf",
       },
       {
         title: "Personnalisation du portail captif ALCASAR",
-        desc: "Modification de l'interface graphique du portail captif ALCASAR et reorganisation de l'arborescence fichiers systeme. Personnalisation visuelle, adaptation des pages d'authentification et organisation structurelle.",
+        desc: "Modification de l'interface graphique du portail captif ALCASAR et réorganisation de l'arborescence fichiers système. Personnalisation visuelle, adaptation des pages d'authentification et organisation structurelle.",
         tags: ["Portail captif", "Personnalisation", "Interface", "Organisation"],
         pdf: "/portfolio/docs/stage-modification-portail-captif.pdf",
       },
       {
         title: "Analyse comparative des configurations Firefox",
-        desc: "Etude comparative approfondie des methodes de configuration centralisee Firefox : fichier policies.json (format JSON moderne) versus firefox.cfg (format AutoConfig legacy). Analyse des avantages et choix de solution.",
-        tags: ["Firefox", "Configuration", "Policies", "Deploiement", "Navigateur"],
+        desc: "Étude comparative approfondie des méthodes de configuration centralisée Firefox : fichier policies.json (format JSON moderne) versus firefox.cfg (format AutoConfig legacy). Analyse des avantages et choix de solution.",
+        tags: ["Firefox", "Configuration", "Policies", "Déploiement", "Navigateur"],
         pdf: "/portfolio/docs/stage-firefox-policies.pdf",
       },
       {
-        title: "Automatisation des taches planifiees avec Cron",
-        desc: "Configuration et gestion des taches cron pour automatiser les operations d'ALCASAR : planification des mises a jour systeme, sauvegardes automatiques, purge des logs anciens et maintenance preventive.",
+        title: "Automatisation des tâches planifiées avec Cron",
+        desc: "Configuration et gestion des tâches cron pour automatiser les opérations d'ALCASAR : planification des mises à jour système, sauvegardes automatiques, purge des logs anciens et maintenance préventive.",
         tags: ["Cron", "Automatisation", "Planification", "Maintenance", "Scripts"],
         pdf: "/portfolio/docs/stage-taches-cron-alcasar.pdf",
       },
       {
-        title: "Gestion et analyse des journaux systeme ALCASAR",
-        desc: "Comprehension approfondie des fichiers logs d'ALCASAR. Localisation des journaux, interpretation des messages d'erreur, analyse des traces de connexion et mise en place d'une surveillance efficace pour supervision.",
-        tags: ["Logs", "Journaux", "Supervision", "Debug", "Monitoring"],
+        title: "Gestion et analyse des journaux système ALCASAR",
+        desc: "Compréhension approfondie des fichiers logs d'ALCASAR. Localisation des journaux, interprétation des messages d'erreur, analyse des traces de connexion et mise en place d'une surveillance efficace pour supervision.",
+        tags: ["Logs", "Journaux", "Supervision", "Débogage", "Monitoring"],
         pdf: "/portfolio/docs/stage-logs-alcasar.pdf",
       },
     ] as Project[],
@@ -112,56 +112,56 @@ const categories = [
     projects: [
       {
         title: "TP Iptables (Labtainer)",
-        desc: "Configuration d'un pare-feu Linux avec iptables pour filtrer les flux entre un client et un serveur. Verification des ports/services avec nmap, observation des paquets dans Wireshark, controle des logs, puis autorisation d'un service specifique (wizbang sur le port 10054).",
+        desc: "Configuration d'un pare-feu Linux avec iptables pour filtrer les flux entre un client et un serveur. Vérification des ports/services avec nmap, observation des paquets dans Wireshark, contrôle des logs, puis autorisation d'un service spécifique (wizbang sur le port 10054).",
         tags: ["Iptables", "Labtainer", "Pare-feu", "Nmap", "Wireshark"],
-        pdf: "/portfolio/docs/tp-iptables.pdf",
+        pdf: "",
       },
       {
         title: "TP Packet-Introspection (Labtainer)",
-        desc: "Analyse de captures reseau avec Wireshark pour identifier le flux TCP le plus actif. Geolocalisation IP, reconstruction de flux HTTP pour retrouver des messages caches, et extraction d'un fichier binaire FTP depuis la capture.",
-        tags: ["Wireshark", "Labtainer", "TCP", "HTTP", "FTP", "Analyse reseau"],
-        pdf: "/portfolio/docs/tp-packet-introspection.pdf",
+        desc: "Analyse de captures réseau avec Wireshark pour identifier le flux TCP le plus actif. Géolocalisation IP, reconstruction de flux HTTP pour retrouver des messages cachés, et extraction d'un fichier binaire FTP depuis la capture.",
+        tags: ["Wireshark", "Labtainer", "TCP", "HTTP", "FTP", "Analyse réseau"],
+        pdf: "",
       },
       {
         title: "TP Nmap (Labtainer)",
-        desc: "Utilisation de Nmap pour la reconnaissance reseau et l'audit de base : scan de localhost, du reseau local et d'un hote distant autorise. Interpretation des resultats (hotes actifs, ports ouverts, services detectes) pour evaluer l'exposition du reseau.",
+        desc: "Utilisation de Nmap pour la reconnaissance réseau et l'audit de base : scan de localhost, du réseau local et d'un hôte distant autorisé. Interprétation des résultats (hôtes actifs, ports ouverts, services détectés) pour évaluer l'exposition du réseau.",
         tags: ["Nmap", "Labtainer", "Scan", "Reconnaissance", "Audit"],
-        pdf: "/portfolio/docs/tp-nmap.pdf",
+        pdf: "",
       },
       {
         title: "TP Snort (Labtainer IDS)",
-        desc: "Mise en place de la detection d'intrusion avec Snort dans un environnement Labtainer. Test des regles existantes, creation de regles personnalisees (detection de CONFIDENTIAL), observation de l'effet du HTTPS, puis ajustement du mirroring et des regles pour differencier trafic interne et externe.",
-        tags: ["Snort", "IDS", "Labtainer", "Detection intrusion", "Regles"],
-        pdf: "/portfolio/docs/tp-snort.pdf",
+        desc: "Mise en place de la détection d'intrusion avec Snort dans un environnement Labtainer. Test des règles existantes, création de règles personnalisées (détection de CONFIDENTIAL), observation de l'effet du HTTPS, puis ajustement du mirroring et des règles pour différencier trafic interne et externe.",
+        tags: ["Snort", "IDS", "Labtainer", "Détection d'intrusion", "Règles"],
+        pdf: "",
       },
       {
-        title: "Mise en place de OpenSSL, Apache2 et Redirection HTTPS",
-        desc: "Configuration d'un environnement securise en HTTPS sur deux machines virtuelles Linux : installation des paquets, generation de certificat SSL, configuration d'Apache2 et deploiement d'un site web.",
+        title: "Mise en place d'OpenSSL, Apache2 et redirection HTTPS",
+        desc: "Configuration d'un environnement sécurisé en HTTPS sur deux machines virtuelles Linux : installation des paquets, génération de certificat SSL, configuration d'Apache2 et déploiement d'un site web.",
         tags: ["Apache2", "OpenSSL", "HTTPS", "SSL", "Linux"],
-        pdf: "/portfolio/docs/tp-openssl-apache.pdf",
+        pdf: "",
       },
       {
-        title: "Mise en place d'un serveur GLPI & Creation de ticket",
-        desc: "Installation du serveur SSH pour l'administration a distance, configuration de la redirection de ports sur VirtualBox, deploiement et configuration de GLPI pour la gestion du parc informatique.",
+        title: "Mise en place d'un serveur GLPI et création de ticket",
+        desc: "Installation du serveur SSH pour l'administration à distance, configuration de la redirection de ports sur VirtualBox, déploiement et configuration de GLPI pour la gestion du parc informatique.",
         tags: ["GLPI", "SSH", "VirtualBox", "Ticketing", "Debian"],
         pdf: "/portfolio/docs/tp-glpi.pdf",
       },
       {
         title: "Mise en place de Windows Server 2022",
-        desc: "Configuration complete d'un serveur Windows Server 2022 : installation et configuration de DHCP, DNS, Active Directory Domain Services, gestion de domaine, partage SMB et strategies de groupe (GPO).",
+        desc: "Configuration complète d'un serveur Windows Server 2022 : installation et configuration de DHCP, DNS, Active Directory Domain Services, gestion de domaine, partage SMB et stratégies de groupe (GPO).",
         tags: ["Windows Server", "DHCP", "DNS", "Active Directory", "SMB", "GPO"],
         pdf: "/portfolio/docs/tp-windows-server-2022.pdf",
       },
       {
         title: "Mise en place de Reverse Proxy et Serveurs Web",
-        desc: "Configuration d'un reverse proxy Nginx avec load balancing sur deux serveurs web Apache2. Mise en place de la redirection de ports sous VirtualBox, configuration reseau NAT et reseau prive hote.",
+        desc: "Configuration d'un reverse proxy Nginx avec load balancing sur deux serveurs web Apache2. Mise en place de la redirection de ports sous VirtualBox, configuration réseau NAT et réseau privé hôte.",
         tags: ["Nginx", "Apache2", "Reverse Proxy", "Load Balancing", "VirtualBox"],
         pdf: "/portfolio/docs/tp-reverse-proxy.pdf",
       },
       {
-        title: "Strategie de sauvegarde et protection des fichiers",
-        desc: "Mise en place d'une strategie complete de sauvegarde et de protection des fichiers : creation de dossiers source, synchronisation, gestion des permissions et protection des donnees critiques.",
-        tags: ["Sauvegarde", "Backup", "Protection", "Securite", "Linux"],
+        title: "Stratégie de sauvegarde et protection des fichiers",
+        desc: "Mise en place d'une stratégie complète de sauvegarde et de protection des fichiers : création de dossiers source, synchronisation, gestion des permissions et protection des données critiques.",
+        tags: ["Sauvegarde", "Backup", "Protection", "Sécurité", "Linux"],
         pdf: "/portfolio/docs/tp-sauvegarde-protection.pdf",
       },
     ] as Project[],
@@ -176,8 +176,8 @@ const categories = [
         label: "AP1",
         projects: [
           {
-            title: "Creation de site vitrine",
-            desc: "Creation complete d'un site web vitrine responsive en HTML et CSS uniquement. Design adaptatif multi-ecrans, mise en ligne et versioning du code source via GitHub.",
+            title: "Création de site vitrine",
+            desc: "Création complète d'un site web vitrine responsive en HTML et CSS uniquement. Design adaptatif multi-écrans, mise en ligne et versioning du code source via GitHub.",
             tags: ["HTML", "CSS", "Site vitrine", "GitHub"],
             pdf: "https://pitch.com/v/lems-de-la-nature-votre-verre-c5vs2a",
             github: "https://github.com/Sabi0407/Projet--AP1",
@@ -189,9 +189,9 @@ const categories = [
         label: "AP2",
         projects: [
           {
-            title: "DEPLOG - Deploiement automatise de logiciels",
-            desc: "Automatisation des installations, mises a jour et desinstallations d'applications sur un parc informatique pour reduire les manipulations manuelles et renforcer la securite.",
-            tags: ["Deploiement", "Automation", "Parc informatique", "Securite"],
+            title: "DEPLOG - Déploiement automatisé de logiciels",
+            desc: "Automatisation des installations, mises à jour et désinstallations d'applications sur un parc informatique pour réduire les manipulations manuelles et renforcer la sécurité.",
+            tags: ["Déploiement", "Automatisation", "Parc informatique", "Sécurité"],
             pdf: "/portfolio/docs/ap2-deplog.pdf",
             github: "https://github.com/Sabi0407/Projet--AP2",
           },
@@ -203,7 +203,7 @@ const categories = [
         projects: [
           {
             title: "Mise en place de Zabbix dans le VLAN 10",
-            desc: "Installation de Zabbix Server 7.4 sur Debian 13 avec configuration reseau statique, resolution DNS et base MariaDB. Deploiement des agents sur clients Windows et Debian pour la supervision complete.",
+            desc: "Installation de Zabbix Server 7.4 sur Debian 13 avec configuration réseau statique, résolution DNS et base MariaDB. Déploiement des agents sur clients Windows et Debian pour la supervision complète.",
             tags: ["Zabbix", "VLAN", "MariaDB", "Monitoring", "Debian 13"],
             pdf: "/portfolio/docs/ap3-zabbix.pdf",
           },
@@ -215,7 +215,7 @@ const categories = [
         projects: [
           {
             title: "Mise en place du Proxmox Backup Server",
-            desc: "Installation et configuration de Proxmox Backup Server pour la sauvegarde centralisee et securisee des VMs et conteneurs. Solution dedieee de backup pour infrastructure Proxmox VE.",
+            desc: "Installation et configuration de Proxmox Backup Server pour la sauvegarde centralisée et sécurisée des VMs et conteneurs. Solution dédiée de backup pour infrastructure Proxmox VE.",
             tags: ["Proxmox", "PBS", "Backup", "Virtualisation", "Sauvegarde"],
             pdf: "/portfolio/docs/ap4-proxmox-backup.pdf",
           },
@@ -256,13 +256,13 @@ function ProjectCard({ project }: { project: Project }) {
                 className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-transform hover:scale-105"
               >
                 <Download size={14} />
-                Telecharger
+                Télécharger
               </a>
             )}
           </>
         ) : (
           <span className="inline-flex items-center gap-1.5 rounded-md bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground">
-            Documentation a venir
+            Documentation à venir
           </span>
         )}
         {project.github && (
@@ -292,11 +292,10 @@ export default function ProjetsSection() {
       <div className="mx-auto max-w-5xl">
         <h2 className="font-heading text-3xl font-bold text-foreground text-center mb-4">Projets</h2>
         <p className="text-center text-muted-foreground mb-4">
-          {"Mes principales realisations techniques et documentations"}
+          Mes principales réalisations techniques et documentations
         </p>
         <div className="mx-auto mb-12 h-1 w-16 rounded-full bg-primary" />
 
-        {/* Category Tabs */}
         <div className="mb-8 flex flex-wrap justify-center gap-2">
           {categories.map((cat) => {
             const Icon = cat.icon
@@ -318,7 +317,6 @@ export default function ProjetsSection() {
           })}
         </div>
 
-        {/* AP Sub-tabs */}
         {activeTab === "ap" && activeCategory && "subCategories" in activeCategory && (
           <div className="mb-8 flex flex-wrap justify-center gap-2">
             {activeCategory.subCategories?.map((sub) => (
@@ -338,7 +336,6 @@ export default function ProjetsSection() {
           </div>
         )}
 
-        {/* Projects Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
           {activeTab !== "ap" &&
             activeCategory &&

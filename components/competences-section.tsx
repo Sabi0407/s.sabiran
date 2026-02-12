@@ -1,9 +1,10 @@
 import { Monitor, Network, Container, Globe, Terminal, ShieldCheck } from "lucide-react"
+import PDFPreview from "./pdf-preview"
 
 const skills = [
   {
     icon: Monitor,
-    title: "Systemes d'exploitation",
+    title: "Systèmes d'exploitation",
     subtitle: "Windows / Linux",
     tags: ["Windows Server 2016/2019/2022", "Debian 11/12", "Ubuntu Server", "Active Directory", "GPO", "DHCP/DNS"],
   },
@@ -16,14 +17,14 @@ const skills = [
   {
     icon: Globe,
     title: "Services & Applications",
-    subtitle: "Web / Base de donnees",
+    subtitle: "Web / Base de données",
     tags: ["Apache2", "OpenSSL/TLS", "SSH", "GLPI", "Zabbix", "MariaDB", "MySQL"],
   },
   {
     icon: ShieldCheck,
-    title: "Securite & Supervision",
-    subtitle: "Monitoring / Securisation",
-    tags: ["Zabbix Monitoring", "Gestion des sauvegardes", "Securisation SSH", "Certificats SSL/TLS", "Analyse de logs"],
+    title: "Sécurité & Supervision",
+    subtitle: "Monitoring / Sécurisation",
+    tags: ["Zabbix Monitoring", "Gestion des sauvegardes", "Sécurisation SSH", "Certificats SSL/TLS", "Analyse de logs"],
   },
 ]
 
@@ -31,10 +32,10 @@ export default function CompetencesSection() {
   return (
     <section id="competences" className="py-24 px-6 bg-card">
       <div className="mx-auto max-w-5xl">
-        <h2 className="font-heading text-3xl font-bold text-foreground text-center mb-4">Competences</h2>
+        <h2 className="font-heading text-3xl font-bold text-foreground text-center mb-4">Compétences</h2>
         <div className="mx-auto mb-12 h-1 w-16 rounded-full bg-primary" />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((skill) => {
             const Icon = skill.icon
             return (
@@ -64,6 +65,22 @@ export default function CompetencesSection() {
               </div>
             )
           })}
+        </div>
+
+        <div className="mt-12">
+          <p className="text-center text-sm text-muted-foreground mb-4">Documents</p>
+          <div className="grid gap-3 sm:grid-cols-2 max-w-2xl mx-auto">
+            <PDFPreview 
+              pdfUrl="/portfolio/CV_SRIKANTHAN_Sabiran.pdf" 
+              title="Mon CV"
+              description="Technicien Systèmes & Réseaux - Alternance Support N1"
+            />
+            <PDFPreview 
+              pdfUrl="/portfolio/docs/tableau-e5-synthese.pdf" 
+              title="Tableau E5"
+              description="Synthèse des compétences BTS SIO SISR"
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -5,9 +5,9 @@ import { Menu, X, Mail, Linkedin, Github, Rss } from "lucide-react"
 
 const navLinks = [
   { label: "Accueil", href: "#accueil" },
-  { label: "A propos", href: "#apropos" },
+  { label: "À propos", href: "#apropos" },
   { label: "Parcours", href: "#parcours" },
-  { label: "Competences", href: "#competences" },
+  { label: "Compétences", href: "#competences" },
   { label: "Projets", href: "#projets" },
   { label: "Contact", href: "#contact" },
 ]
@@ -23,7 +23,6 @@ export default function Navbar() {
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">SS</span>
           </a>
           
-          {/* Social links next to logo - Desktop only */}
           <div className="hidden md:flex items-center gap-2 border-l border-border pl-4">
             <a
               href="mailto:sabiran.pro@proton.me"
@@ -61,7 +60,6 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          {/* Desktop navigation */}
           <ul className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -75,7 +73,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Mobile toggle */}
           <button
             type="button"
             className="md:hidden text-foreground"
@@ -87,7 +84,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="border-t border-border bg-card px-6 pb-4 md:hidden">
           <ul className="flex flex-col gap-3 pt-3">
@@ -104,7 +100,6 @@ export default function Navbar() {
             ))}
           </ul>
           
-          {/* Mobile social links */}
           <div className="flex items-center justify-center gap-3 pt-4 mt-4 border-t border-border">
             <a
               href="mailto:sabiran.pro@proton.me"

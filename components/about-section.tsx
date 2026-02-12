@@ -5,7 +5,7 @@ export default function AboutSection() {
     <section id="apropos" className="py-24 px-6">
       <div className="mx-auto max-w-4xl">
         <h2 className="font-heading text-3xl font-bold text-foreground text-center mb-4">
-          {"A propos"}
+          À propos
         </h2>
         <div className="mx-auto mb-12 h-1 w-16 rounded-full bg-primary" />
 
@@ -16,7 +16,7 @@ export default function AboutSection() {
             </div>
             <h3 className="mb-2 font-heading text-lg font-semibold text-card-foreground">Objectif</h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              {"Devenir Administrateur Systemes, specialise dans la gestion des infrastructures, la virtualisation et la supervision des environnements IT."}
+              Devenir Administrateur Systèmes, spécialisé dans la gestion des infrastructures, la virtualisation et la supervision des environnements IT.
             </p>
           </div>
 
@@ -26,7 +26,7 @@ export default function AboutSection() {
             </div>
             <h3 className="mb-2 font-heading text-lg font-semibold text-card-foreground">Formation</h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              {"Etudiant en BTS SIO option SISR a l'IPSSI, je me forme aux technologies des systemes d'information et aux infrastructures informatiques."}
+              Étudiant en BTS SIO option SISR à l'IPSSI, je me forme aux technologies des systèmes d'information et aux infrastructures informatiques.
             </p>
           </div>
 
@@ -36,7 +36,7 @@ export default function AboutSection() {
             </div>
             <h3 className="mb-2 font-heading text-lg font-semibold text-card-foreground">Passion</h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              {"Passionne par les systemes, j'aime comprendre comment ca fonctionne, resoudre des problemes concrets et mettre en place des serveurs Proxmox avec differents services : Active Directory, GLPI, Zabbix."}
+              Passionné par les systèmes, j'aime comprendre comment ça fonctionne, résoudre des problèmes concrets et mettre en place des serveurs Proxmox avec différents services : Active Directory, GLPI, Zabbix.
             </p>
           </div>
         </div>
