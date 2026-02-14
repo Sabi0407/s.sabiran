@@ -259,6 +259,13 @@ const categories = [
             tags: ["Proxmox", "PBS", "Backup", "Virtualisation", "Sauvegarde"],
             pdf: "/portfolio/docs/ap4-proxmox-backup.pdf",
           },
+          {
+            title: "Mise en place Proxmox Backup Serveur",
+            desc: "TP de configuration d'un serveur Proxmox Backup pour centraliser les sauvegardes et valider les restaurations des machines virtuelles.",
+            tags: ["Proxmox", "Backup", "TP", "Virtualisation"],
+            pdf: "",
+            docStatus: "TP en cours de réalisation",
+          },
         ] as Project[],
       },
     ],
