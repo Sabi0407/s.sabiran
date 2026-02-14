@@ -10,6 +10,7 @@ type Project = {
   desc: string
   tags: string[]
   pdf: string
+  docStatus?: string
   github?: string
 }
 
@@ -240,10 +241,11 @@ const categories = [
         label: "AP3",
         projects: [
           {
-            title: "Mise en place de Zabbix dans le VLAN 10",
+            title: "Mise En place d'Un serveur Zabbix et ses agents",
             desc: "Installation de Zabbix Server 7.4 sur Debian 13 avec configuration réseau statique, résolution DNS et base MariaDB. Déploiement des agents sur clients Windows et Debian pour la supervision complète.",
             tags: ["Zabbix", "VLAN", "MariaDB", "Monitoring", "Debian 13"],
-            pdf: "/portfolio/docs/ap3-zabbix.pdf",
+            pdf: "",
+            docStatus: "En cours de rédaction",
           },
         ] as Project[],
       },
@@ -301,7 +303,7 @@ function ProjectCard({ project }: { project: Project }) {
             </>
           ) : (
             <span className="inline-flex items-center gap-1.5 rounded-md bg-muted px-3 py-1.5 text-xs font-medium text-muted-foreground">
-              Documentation à venir
+              {project.docStatus || "Documentation à venir"}
             </span>
           )}
           {project.github && (
