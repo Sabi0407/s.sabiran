@@ -56,6 +56,18 @@ const categories = [
         tags: ["GLPI", "Active Directory", "Windows", "Ticketing", "Support"],
         pdf: "",
       },
+      {
+        title: "Déploiement et préparation des postes",
+        desc: "Installation, configuration et mise à disposition de postes de travail pour les équipes, avec vérification des accès et des outils essentiels.",
+        tags: ["Déploiement", "Postes", "Windows", "Support", "Préparation"],
+        pdf: "",
+      },
+      {
+        title: "Support utilisateurs et suivi quotidien",
+        desc: "Accompagnement des utilisateurs au quotidien, résolution des incidents courants et suivi des demandes jusqu'à la clôture.",
+        tags: ["Support", "Incidents", "Utilisateurs", "Ticketing", "Suivi"],
+        pdf: "",
+      },
     ] as Project[],
   },
   {
