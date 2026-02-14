@@ -80,12 +80,12 @@ export default function CompetencesSection() {
           <p className="text-center text-sm font-medium text-muted-foreground mb-4">Documents</p>
           <div className="grid gap-3 sm:grid-cols-2 max-w-3xl mx-auto">
             <PDFPreview 
-              pdfUrl="/portfolio/CV_SRIKANTHAN_Sabiran.pdf" 
+              pdfUrl="/s.sabiran/CV_SRIKANTHAN_Sabiran.pdf" 
               title="Mon CV"
               description="Technicien Systèmes & Réseaux - Alternance Support N1"
             />
             <PDFPreview 
-              pdfUrl="/portfolio/docs/tableau-e5-synthese.pdf" 
+              pdfUrl="/s.sabiran/docs/tableau-e5-synthese.pdf" 
               title="Tableau E5"
               description="Synthèse des compétences BTS SIO SISR"
             />

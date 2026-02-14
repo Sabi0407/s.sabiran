@@ -231,7 +231,7 @@ export default function VeillePage() {
 
         <div className="mt-12 text-center">
           <a
-            href="/portfolio/"
+            href="/s.sabiran/"
             className="inline-flex items-center gap-2 rounded-xl border-2 border-border bg-card px-8 py-4 text-sm font-semibold text-foreground shadow-lg transition-all hover:scale-105 hover:border-primary hover:bg-card/80"
           >
             ← Retour au portfolio

@@ -52,7 +52,7 @@ export default function Navbar() {
               <Github size={16} />
             </a>
             <a
-              href="/portfolio/veille/"
+              href="/s.sabiran/veille/"
               className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-all hover:text-primary hover:bg-primary/10"
               aria-label="RSS"
             >
@@ -136,7 +136,7 @@ export default function Navbar() {
               <Github size={18} />
             </a>
             <a
-              href="/portfolio/veille/"
+              href="/s.sabiran/veille/"
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-muted-foreground transition-all hover:text-primary hover:border-primary"
               aria-label="RSS"
             >

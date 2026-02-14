@@ -48,7 +48,7 @@ export default function ContactSection() {
             <Github size={20} />
           </a>
           <a
-            href="/portfolio/veille/"
+            href="/s.sabiran/veille/"
             className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary hover:shadow-lg hover:-translate-y-1"
             aria-label="Veille technologique"
           >
