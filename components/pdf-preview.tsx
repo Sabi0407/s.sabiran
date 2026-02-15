@@ -15,26 +15,28 @@ export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewPro
 
   return (
     <>
-      <div className="rounded-xl border border-border bg-background p-4 transition-all hover:border-primary/40 hover:shadow-md">
-        <div className="mb-3">
-          <h4 className="font-heading text-sm font-bold text-foreground">{title}</h4>
-          {description && <p className="mt-0.5 text-xs text-muted-foreground">{description}</p>}
+      <div className="rounded-xl border border-border bg-background p-4 transition-all duration-300 hover:border-primary/40 hover:shadow-md">
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <div>
+            <h4 className="font-heading text-sm font-bold text-foreground">{title}</h4>
+            {description && <p className="mt-0.5 text-xs text-muted-foreground">{description}</p>}
+          </div>
+          <span className="rounded-md bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">PDF</span>
         </div>
 
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative block w-full overflow-hidden rounded-lg border border-border bg-muted/20 text-left"
+          className="block w-full overflow-hidden rounded-lg border border-border bg-card text-left transition-colors hover:border-primary/40"
           aria-label={`Voir ${title}`}
         >
-          <div className="aspect-[3/4] w-full">
+          <div className="h-56 w-full bg-white">
             <iframe
               src={previewSrc}
               title={`Apercu ${title}`}
               className="h-full w-full pointer-events-none"
             />
           </div>
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-          <div className="pointer-events-none absolute bottom-2 left-2 inline-flex items-center gap-1.5 rounded-md bg-black/70 px-2.5 py-1 text-xs font-medium text-white">
+          <div className="flex items-center justify-center gap-1.5 border-t border-border px-3 py-2 text-xs font-medium text-muted-foreground">
             <ExternalLink size={14} />
             Cliquer pour zoom
           </div>

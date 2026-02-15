@@ -78,7 +78,7 @@ export default function CompetencesSection() {
 
         <div className="border-t border-border pt-8">
           <p className="text-center text-sm font-medium text-muted-foreground mb-4">Documents</p>
-          <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2">
+          <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
             <PDFPreview 
               pdfUrl="/s.sabiran/CV_SRIKANTHAN_Sabiran.pdf" 
               title="Mon CV"
