@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { FileText, Download, X, ExternalLink } from "lucide-react"
+import { Download, ExternalLink, X } from "lucide-react"
 
 interface PDFPreviewProps {
   pdfUrl: string
@@ -11,37 +11,44 @@ interface PDFPreviewProps {
 
 export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const previewSrc = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`
 
   return (
     <>
-      <div className="group flex items-center gap-4 rounded-xl border border-border bg-background p-4 transition-all hover:border-primary/40 hover:shadow-md">
-        <div
-          onClick={() => setIsOpen(true)}
-          className="flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground"
-        >
-          <FileText size={24} />
-        </div>
-        <div className="flex-1 min-w-0">
+      <div className="rounded-xl border border-border bg-background p-4 transition-all hover:border-primary/40 hover:shadow-md">
+        <div className="mb-3">
           <h4 className="font-heading text-sm font-bold text-foreground">{title}</h4>
-          {description && (
-            <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
-          )}
+          {description && <p className="mt-0.5 text-xs text-muted-foreground">{description}</p>}
         </div>
-        <div className="flex shrink-0 items-center gap-2">
-          <button
-            onClick={() => setIsOpen(true)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary"
-            aria-label={`Voir ${title}`}
-          >
-            <ExternalLink size={16} />
-          </button>
+
+        <button
+          onClick={() => setIsOpen(true)}
+          className="group relative block w-full overflow-hidden rounded-lg border border-border bg-muted/20 text-left"
+          aria-label={`Voir ${title}`}
+        >
+          <div className="aspect-[3/4] w-full">
+            <iframe
+              src={previewSrc}
+              title={`Apercu ${title}`}
+              className="h-full w-full pointer-events-none"
+            />
+          </div>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute bottom-2 left-2 inline-flex items-center gap-1.5 rounded-md bg-black/70 px-2.5 py-1 text-xs font-medium text-white">
+            <ExternalLink size={14} />
+            Cliquer pour zoom
+          </div>
+        </button>
+
+        <div className="mt-3">
           <a
             href={pdfUrl}
             download
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary"
+            className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
             aria-label={`Telecharger ${title}`}
           >
             <Download size={16} />
+            Telecharger
           </a>
         </div>
       </div>
