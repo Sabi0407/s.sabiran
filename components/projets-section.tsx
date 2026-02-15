@@ -2,7 +2,6 @@
 
 import { ExternalLink, Download, User, Briefcase, BookOpen, FolderOpen, Github, GraduationCap } from "lucide-react"
 import { useState } from "react"
-import PDFPreview from "./pdf-preview"
 import ScrollFadeIn from "./scroll-fade-in"
 
 type Project = {
@@ -241,7 +240,7 @@ const categories = [
         label: "AP3",
         projects: [
           {
-            title: "Mise En place d'Un serveur Zabbix et ses agents",
+            title: "Mise en place d'un serveur Zabbix et de ses agents",
             desc: "Installation de Zabbix Server 7.4 sur Debian 13 avec configuration réseau statique, résolution DNS et base MariaDB. Déploiement des agents sur clients Windows et Debian pour la supervision complète.",
             tags: ["Zabbix", "VLAN", "MariaDB", "Monitoring", "Debian 13"],
             pdf: "/s.sabiran/docs/ap3-zabbix.pdf",
@@ -257,7 +256,7 @@ const categories = [
             desc: "Installation et configuration de Proxmox Backup Server pour la sauvegarde centralisée et sécurisée des VMs et conteneurs. Solution dédiée de backup pour infrastructure Proxmox VE.",
             tags: ["Proxmox", "PBS", "Backup", "Virtualisation", "Sauvegarde"],
             pdf: "",
-            docStatus: "TP non complet en cours de réalisation",
+            docStatus: "TP en cours de réalisation",
           },
         ] as Project[],
       },

@@ -1,4 +1,4 @@
-import { Monitor, Network, Container, Globe, Terminal, ShieldCheck } from "lucide-react"
+import { Monitor, Container, Globe, ShieldCheck } from "lucide-react"
 import PDFPreview from "./pdf-preview"
 import ScrollFadeIn from "./scroll-fade-in"
 

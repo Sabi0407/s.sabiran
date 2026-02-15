@@ -10,7 +10,7 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jet
 
 export const metadata: Metadata = {
   title: 'SRIKANTHAN Sabiran - Portfolio BTS SIO SISR',
-  description: 'Portfolio de SRIKANTHAN Sabiran - Etudiant en BTS SIO SISR',
+  description: 'Portfolio de SRIKANTHAN Sabiran - Étudiant en BTS SIO SISR',
 }
 
 export default function RootLayout({

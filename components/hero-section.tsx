@@ -1,4 +1,4 @@
-import { ArrowDown, FileText, Download, Table, Terminal } from "lucide-react"
+import { ArrowDown, FileText, Download, Table } from "lucide-react"
 import AnimatedBackground from "./animated-background"
 import TypewriterText from "./typewriter-text"
 
