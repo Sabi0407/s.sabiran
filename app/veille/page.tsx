@@ -15,6 +15,29 @@ interface VeillePayload {
   articles?: Article[]
 }
 
+function getVeilleJsonCandidates(): string[] {
+  if (typeof window === "undefined") {
+    return ["/data/veille.json"]
+  }
+
+  const origin = window.location.origin
+  const pathnameSegments = window.location.pathname.split("/").filter(Boolean)
+  const candidates = new Set<string>()
+
+  // Works when URL is ".../veille/".
+  candidates.add(new URL("../data/veille.json", window.location.href).toString())
+
+  // Works even if URL is ".../veille" (without trailing slash).
+  if (pathnameSegments.length > 1) {
+    candidates.add(`${origin}/${pathnameSegments[0]}/data/veille.json`)
+  }
+
+  // Local/custom-domain fallback.
+  candidates.add(`${origin}/data/veille.json`)
+
+  return Array.from(candidates)
+}
+
 export default function VeillePage() {
   const [articles, setArticles] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
@@ -25,12 +48,27 @@ export default function VeillePage() {
   useEffect(() => {
     async function fetchLocalVeille() {
       try {
-        const response = await fetch("../data/veille.json", { cache: "no-store" })
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`)
+        const candidates = getVeilleJsonCandidates()
+        let payload: VeillePayload | null = null
+        let lastErrorStatus: number | null = null
+
+        for (const url of candidates) {
+          const cacheBustedUrl = `${url}${url.includes("?") ? "&" : "?"}ts=${Date.now()}`
+          const response = await fetch(cacheBustedUrl, { cache: "no-store" })
+
+          if (!response.ok) {
+            lastErrorStatus = response.status
+            continue
+          }
+
+          payload = (await response.json()) as VeillePayload
+          break
         }
 
-        const payload = (await response.json()) as VeillePayload
+        if (!payload) {
+          throw new Error(lastErrorStatus ? `HTTP ${lastErrorStatus}` : "No valid veille source")
+        }
+
         const loadedArticles = Array.isArray(payload.articles) ? payload.articles : []
         loadedArticles.sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime())
         setArticles(loadedArticles)
