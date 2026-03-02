@@ -11,6 +11,7 @@ interface PDFPreviewProps {
 
 export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const isPdf = pdfUrl.toLowerCase().endsWith(".pdf")
 
   return (
     <>
@@ -21,13 +22,25 @@ export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewPro
         </div>
 
         <div className="grid gap-2 sm:grid-cols-2">
-          <button
-            onClick={() => setIsOpen(true)}
-            className="inline-flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
-            aria-label={`Voir ${title}`}
-          >
-            Ouvrir
-          </button>
+          {isPdf ? (
+            <button
+              onClick={() => setIsOpen(true)}
+              className="inline-flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+              aria-label={`Voir ${title}`}
+            >
+              Ouvrir
+            </button>
+          ) : (
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+              aria-label={`Ouvrir ${title}`}
+            >
+              Ouvrir
+            </a>
+          )}
           <a
             href={pdfUrl}
             download
@@ -40,7 +53,7 @@ export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewPro
         </div>
       </div>
 
-      {isOpen && (
+      {isPdf && isOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
