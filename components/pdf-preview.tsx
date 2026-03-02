@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useId, useState } from "react"
 import { Download, X } from "lucide-react"
 
 interface PDFPreviewProps {
@@ -11,7 +11,37 @@ interface PDFPreviewProps {
 
 export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const previewId = useId()
   const isPdf = pdfUrl.toLowerCase().endsWith(".pdf")
+
+  const openPreview = () => {
+    setIsOpen(true)
+    window.dispatchEvent(new CustomEvent("portfolio-preview-open", { detail: { id: previewId } }))
+  }
+
+  const getPreviewSrc = () => {
+    if (isPdf) {
+      return pdfUrl
+    }
+
+    // Preview XLSX files via Office web viewer.
+    const absoluteUrl = new URL(pdfUrl, window.location.origin).toString()
+    return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absoluteUrl)}`
+  }
+
+  useEffect(() => {
+    const handleAnotherPreviewOpen = (event: Event) => {
+      const customEvent = event as CustomEvent<{ id?: string }>
+      if (customEvent.detail?.id !== previewId) {
+        setIsOpen(false)
+      }
+    }
+
+    window.addEventListener("portfolio-preview-open", handleAnotherPreviewOpen)
+    return () => {
+      window.removeEventListener("portfolio-preview-open", handleAnotherPreviewOpen)
+    }
+  }, [previewId])
 
   return (
     <>
@@ -22,25 +52,13 @@ export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewPro
         </div>
 
         <div className="grid gap-2 sm:grid-cols-2">
-          {isPdf ? (
-            <button
-              onClick={() => setIsOpen(true)}
-              className="inline-flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
-              aria-label={`Voir ${title}`}
-            >
-              Ouvrir
-            </button>
-          ) : (
-            <a
-              href={pdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
-              aria-label={`Ouvrir ${title}`}
-            >
-              Ouvrir
-            </a>
-          )}
+          <button
+            onClick={openPreview}
+            className="inline-flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+            aria-label={`Voir ${title}`}
+          >
+            Ouvrir
+          </button>
           <a
             href={pdfUrl}
             download
@@ -53,7 +71,7 @@ export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewPro
         </div>
       </div>
 
-      {isPdf && isOpen && (
+      {isOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
@@ -82,7 +100,11 @@ export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewPro
                 </button>
               </div>
             </div>
-            <iframe src={pdfUrl} className="h-[calc(100%-52px)] w-full" title={title} />
+            <iframe
+              src={getPreviewSrc()}
+              className="h-[calc(100%-52px)] w-full"
+              title={title}
+            />
           </div>
         </div>
       )}
