@@ -17,6 +17,20 @@ const RSS_FEEDS = [
   },
 ]
 
+const FALLBACK_NEWS_FEEDS = [
+  {
+    url: "https://news.google.com/rss/search?q=noyau+linux&hl=fr&gl=FR&ceid=FR:fr",
+    category: "Noyau Linux",
+  },
+  {
+    url: "https://news.google.com/rss/search?q=virtualisation+proxmox&hl=fr&gl=FR&ceid=FR:fr",
+    category: "Virtualisation",
+  },
+]
+
+const MAX_ARTICLES = 40
+const MAX_ARTICLE_AGE_DAYS = 365
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const OUTPUT_PATH = path.resolve(__dirname, "..", "public", "data", "veille.json")
@@ -140,6 +154,26 @@ function toSortableDate(value) {
   return Number.isNaN(time) ? 0 : time
 }
 
+function dedupeAndSort(articles) {
+  const deduped = new Map()
+  for (const article of articles) {
+    const key = `${article.title}|${article.link}|${article.published}`
+    if (!deduped.has(key)) {
+      deduped.set(key, article)
+    }
+  }
+  return Array.from(deduped.values()).sort((a, b) => toSortableDate(b.published) - toSortableDate(a.published))
+}
+
+function keepRecentArticles(articles, maxAgeDays) {
+  const now = Date.now()
+  const maxAgeMs = maxAgeDays * 24 * 60 * 60 * 1000
+  return articles.filter((article) => {
+    const t = toSortableDate(article.published)
+    return t > 0 && now - t <= maxAgeMs
+  })
+}
+
 async function readExistingArticles() {
   try {
     const raw = await readFile(OUTPUT_PATH, "utf8")
@@ -180,12 +214,12 @@ async function fetchFeedArticles(feed) {
 
 async function main() {
   const errors = []
-  const fetchedArticles = []
+  const fetchedAlertArticles = []
 
   for (const feed of RSS_FEEDS) {
     try {
       const items = await fetchFeedArticles(feed)
-      fetchedArticles.push(...items)
+      fetchedAlertArticles.push(...items)
     } catch (error) {
       errors.push({
         feed: feed.url,
@@ -195,25 +229,42 @@ async function main() {
     }
   }
 
-  const deduped = new Map()
-  for (const article of fetchedArticles) {
-    const key = `${article.title}|${article.link}|${article.published}`
-    if (!deduped.has(key)) {
-      deduped.set(key, article)
+  let source = "google-alerts-rss"
+  let finalArticles = dedupeAndSort(fetchedAlertArticles)
+
+  if (finalArticles.length === 0) {
+    const fallbackArticles = []
+    for (const feed of FALLBACK_NEWS_FEEDS) {
+      try {
+        const items = await fetchFeedArticles(feed)
+        fallbackArticles.push(...items)
+      } catch (error) {
+        errors.push({
+          feed: feed.url,
+          category: feed.category,
+          message: error instanceof Error ? error.message : String(error),
+        })
+      }
     }
+    finalArticles = dedupeAndSort(fallbackArticles)
+    source = "google-news-rss-fallback"
   }
 
-  let finalArticles = Array.from(deduped.values()).sort((a, b) => toSortableDate(b.published) - toSortableDate(a.published))
+  finalArticles = keepRecentArticles(finalArticles, MAX_ARTICLE_AGE_DAYS).slice(0, MAX_ARTICLES)
 
   if (finalArticles.length === 0) {
     finalArticles = await readExistingArticles()
+    if (finalArticles.length > 0) {
+      source = "cached-previous-data"
+    }
   }
 
   await mkdir(path.dirname(OUTPUT_PATH), { recursive: true })
   const payload = {
     generatedAt: new Date().toISOString(),
-    source: "google-alerts-rss",
+    source,
     feeds: RSS_FEEDS,
+    fallbackFeeds: FALLBACK_NEWS_FEEDS,
     total: finalArticles.length,
     errors,
     articles: finalArticles,
