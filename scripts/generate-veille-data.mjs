@@ -42,7 +42,7 @@ function stripHtmlTags(value) {
 }
 
 function extractTag(xml, tagName) {
-  const match = xml.match(new RegExp(`<${tagName}>([\\s\\S]*?)<\\/${tagName}>`, "i"))
+  const match = xml.match(new RegExp(`<(?:\\w+:)?${tagName}[^>]*>([\\s\\S]*?)<\\/(?:\\w+:)?${tagName}>`, "i"))
   return match ? unwrapCdata(match[1].trim()) : ""
 }
 
@@ -62,6 +62,50 @@ function parseItemsFromRss(xml) {
   }
 
   return items
+}
+
+function extractAtomLink(entryXml) {
+  const links = entryXml.match(/<link\b[^>]*>/gi) || []
+  let fallback = ""
+
+  for (const linkTag of links) {
+    const hrefMatch = linkTag.match(/href=["']([^"']+)["']/i)
+    if (!hrefMatch) {
+      continue
+    }
+
+    const relMatch = linkTag.match(/rel=["']([^"']+)["']/i)
+    const rel = (relMatch?.[1] || "").toLowerCase()
+    const href = hrefMatch[1]
+
+    if (rel === "alternate") {
+      return href
+    }
+
+    if (!fallback && rel !== "self") {
+      fallback = href
+    }
+  }
+
+  return fallback
+}
+
+function parseEntriesFromAtom(xml) {
+  const entries = []
+  const entryRegex = /<entry\b[^>]*>([\s\S]*?)<\/entry>/gi
+  let entryMatch
+
+  while ((entryMatch = entryRegex.exec(xml)) !== null) {
+    const entryXml = entryMatch[1]
+    entries.push({
+      title: extractTag(entryXml, "title"),
+      link: extractAtomLink(entryXml),
+      published: extractTag(entryXml, "published") || extractTag(entryXml, "updated"),
+      content: extractTag(entryXml, "content") || extractTag(entryXml, "summary"),
+    })
+  }
+
+  return entries
 }
 
 function normalizeArticleLink(rawLink) {
@@ -119,7 +163,9 @@ async function fetchFeedArticles(feed) {
   }
 
   const xml = await response.text()
-  const items = parseItemsFromRss(xml)
+  const atomEntries = parseEntriesFromAtom(xml)
+  const rssItems = parseItemsFromRss(xml)
+  const items = atomEntries.length > 0 ? atomEntries : rssItems
 
   return items
     .map((item) => ({

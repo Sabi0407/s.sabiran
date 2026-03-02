@@ -98,7 +98,7 @@ export default function VeillePage() {
           </div>
         ) : articles.length === 0 ? (
           <div className="rounded-xl border border-border bg-card p-8 text-center">
-            <p className="text-muted-foreground">Aucun article disponible pour le moment.</p>
+            <p className="text-muted-foreground">Aucun nouvel article dans vos flux Google Alerts pour le moment.</p>
           </div>
         ) : (
           <div className="space-y-6">
