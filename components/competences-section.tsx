@@ -88,6 +88,7 @@ export default function CompetencesSection() {
               pdfUrl="/s.sabiran/docs/tableau-e5-synthese.pdf" 
               title="Tableau E5"
               description="Synthèse des compétences BTS SIO SISR"
+              openMode="new-tab"
             />
           </div>
         </div>

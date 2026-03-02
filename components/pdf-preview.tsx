@@ -7,9 +7,10 @@ interface PDFPreviewProps {
   pdfUrl: string
   title: string
   description?: string
+  openMode?: "modal" | "new-tab"
 }
 
-export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewProps) {
+export default function PDFPreview({ pdfUrl, title, description, openMode = "modal" }: PDFPreviewProps) {
   const [isOpen, setIsOpen] = useState(false)
   const previewId = useId()
   const isPdf = pdfUrl.toLowerCase().endsWith(".pdf")
@@ -52,13 +53,25 @@ export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewPro
         </div>
 
         <div className="grid gap-2 sm:grid-cols-2">
-          <button
-            onClick={openPreview}
-            className="inline-flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
-            aria-label={`Voir ${title}`}
-          >
-            Ouvrir
-          </button>
+          {openMode === "new-tab" ? (
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+              aria-label={`Voir ${title}`}
+            >
+              Ouvrir
+            </a>
+          ) : (
+            <button
+              onClick={openPreview}
+              className="inline-flex w-full items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+              aria-label={`Voir ${title}`}
+            >
+              Ouvrir
+            </button>
+          )}
           <a
             href={pdfUrl}
             download
@@ -71,7 +84,7 @@ export default function PDFPreview({ pdfUrl, title, description }: PDFPreviewPro
         </div>
       </div>
 
-      {isOpen && (
+      {openMode === "modal" && isOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
