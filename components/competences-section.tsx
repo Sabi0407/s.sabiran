@@ -85,7 +85,7 @@ export default function CompetencesSection() {
               description="Technicien Systèmes & Réseaux - Alternance Support N1"
             />
             <PDFPreview 
-              pdfUrl="/s.sabiran/docs/tableau-e5-synthese.xlsx" 
+              pdfUrl="/s.sabiran/docs/tableau-e5-synthese.pdf" 
               title="Tableau E5"
               description="Synthèse des compétences BTS SIO SISR"
             />
