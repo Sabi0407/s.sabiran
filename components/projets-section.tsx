@@ -362,7 +362,6 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function ProjetsSection() {
   const [activeTab, setActiveTab] = useState("perso")
-  const [activeAP, setActiveAP] = useState("ap1")
 
   const activeCategory = categories.find((c) => c.id === activeTab)
 
@@ -405,25 +404,6 @@ export default function ProjetsSection() {
           })}
         </div>
 
-        {activeTab === "ap" && activeCategory && "subCategories" in activeCategory && (
-          <div className="mb-8 flex flex-wrap justify-center gap-2">
-            {activeCategory.subCategories?.map((sub) => (
-              <button
-                key={sub.id}
-                type="button"
-                onClick={() => setActiveAP(sub.id)}
-                className={`rounded-md px-3.5 py-1.5 text-sm font-medium transition-all ${
-                  activeAP === sub.id
-                    ? "bg-accent text-accent-foreground shadow-sm"
-                    : "bg-muted text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {sub.label}
-              </button>
-            ))}
-          </div>
-        )}
-
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {activeTab !== "ap" &&
             activeCategory &&
@@ -434,8 +414,8 @@ export default function ProjetsSection() {
             activeCategory &&
             "subCategories" in activeCategory &&
             activeCategory.subCategories
-              ?.find((sub) => sub.id === activeAP)
-              ?.projects.map((project) => <ProjectCard key={project.title} project={project} />)}
+              ?.flatMap((sub) => sub.projects)
+              .map((project) => <ProjectCard key={`ap-${project.title}`} project={project} />)}
         </div>
       </div>
       </ScrollFadeIn>
