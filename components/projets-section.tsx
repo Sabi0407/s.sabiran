@@ -11,6 +11,7 @@ type Project = {
   pdf: string
   docStatus?: string
   github?: string
+  categoryBadge?: string
 }
 
 const categories = [
@@ -269,7 +270,14 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <>
       <div className="group flex flex-col rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1">
-        <h3 className="mb-2 font-heading text-base font-bold text-foreground">{project.title}</h3>
+        <div className="mb-2 flex items-start justify-between gap-3">
+          <h3 className="font-heading text-base font-bold text-foreground">{project.title}</h3>
+          {project.categoryBadge && (
+            <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary">
+              {project.categoryBadge}
+            </span>
+          )}
+        </div>
         <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">{project.desc}</p>
         <div className="mb-4 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
@@ -414,8 +422,8 @@ export default function ProjetsSection() {
             activeCategory &&
             "subCategories" in activeCategory &&
             activeCategory.subCategories
-              ?.flatMap((sub) => sub.projects)
-              .map((project) => <ProjectCard key={`ap-${project.title}`} project={project} />)}
+              ?.flatMap((sub) => sub.projects.map((project) => ({ ...project, categoryBadge: sub.label })))
+              .map((project) => <ProjectCard key={`ap-${project.categoryBadge}-${project.title}`} project={project} />)}
         </div>
       </div>
       </ScrollFadeIn>
