@@ -9,6 +9,7 @@ type Project = {
   desc: string
   tags: string[]
   pdf: string
+  schemaPdf?: string
   docStatus?: string
   github?: string
   categoryBadge?: string
@@ -245,6 +246,7 @@ const categories = [
             desc: "Installation de Zabbix Server 7.4 sur Debian 13 avec configuration réseau statique, résolution DNS et base MariaDB. Déploiement des agents sur clients Windows et Debian pour la supervision complète.",
             tags: ["Zabbix", "VLAN", "MariaDB", "Monitoring", "Debian 13"],
             pdf: "/s.sabiran/docs/ap3-zabbix.pdf",
+            schemaPdf: "/s.sabiran/docs/schema-baie-a.pdf",
           },
         ] as Project[],
       },
@@ -257,6 +259,7 @@ const categories = [
             desc: "Installation et configuration de Proxmox Backup Server pour la sauvegarde centralisée et sécurisée des VMs et conteneurs. Solution dédiée de backup pour infrastructure Proxmox VE.",
             tags: ["Proxmox", "PBS", "Backup", "Virtualisation", "Sauvegarde"],
             pdf: "/s.sabiran/docs/ap4-proxmox-backup.pdf",
+            schemaPdf: "/s.sabiran/docs/schema-baie-a.pdf",
           },
         ] as Project[],
       },
@@ -266,6 +269,19 @@ const categories = [
 
 function ProjectCard({ project }: { project: Project }) {
   const [showModal, setShowModal] = useState(false)
+  const [modalDoc, setModalDoc] = useState<{ url: string; title: string } | null>(null)
+  const hasMainDoc = Boolean(project.pdf)
+  const hasSchemaDoc = Boolean(project.schemaPdf)
+
+  const openModal = (url: string, title: string) => {
+    setModalDoc({ url, title })
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+    setModalDoc(null)
+  }
 
   return (
     <>
@@ -287,16 +303,18 @@ function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
         <div className="flex flex-wrap items-center gap-2 border-t border-border pt-4">
-          {project.pdf ? (
+          {hasMainDoc || hasSchemaDoc ? (
             <>
-              <button
-                onClick={() => setShowModal(true)}
-                className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-all duration-200 hover:scale-105 hover:shadow-md"
-              >
-                <ExternalLink size={14} />
-                Prévisualiser
-              </button>
-              {!project.pdf.startsWith('http') && (
+              {hasMainDoc && (
+                <button
+                  onClick={() => openModal(project.pdf, project.title)}
+                  className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-all duration-200 hover:scale-105 hover:shadow-md"
+                >
+                  <ExternalLink size={14} />
+                  Prévisualiser
+                </button>
+              )}
+              {hasMainDoc && !project.pdf.startsWith("http") && (
                 <a
                   href={project.pdf}
                   download
@@ -304,6 +322,25 @@ function ProjectCard({ project }: { project: Project }) {
                 >
                   <Download size={14} />
                   Télécharger
+                </a>
+              )}
+              {hasSchemaDoc && (
+                <button
+                  onClick={() => openModal(project.schemaPdf!, `${project.title} - Schéma réseau`)}
+                  className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-accent-foreground transition-all duration-200 hover:scale-105 hover:shadow-md"
+                >
+                  <ExternalLink size={14} />
+                  Prévisualiser Schéma
+                </button>
+              )}
+              {hasSchemaDoc && (
+                <a
+                  href={project.schemaPdf}
+                  download
+                  className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-all duration-200 hover:scale-105 hover:border-primary/40"
+                >
+                  <Download size={14} />
+                  Télécharger Schéma
                 </a>
               )}
             </>
@@ -326,21 +363,21 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
 
-      {showModal && project.pdf && (
-        <div 
+      {showModal && modalDoc && (
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-          onClick={() => setShowModal(false)}
+          onClick={closeModal}
         >
-          <div 
+          <div
             className="relative h-full w-full max-w-6xl overflow-hidden rounded-xl bg-background shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-border bg-card p-4">
-              <h3 className="font-heading text-lg font-bold text-foreground">{project.title}</h3>
+              <h3 className="font-heading text-lg font-bold text-foreground">{modalDoc.title}</h3>
               <div className="flex items-center gap-2">
-                {!project.pdf.startsWith('http') && (
+                {!modalDoc.url.startsWith("http") && (
                   <a
-                    href={project.pdf}
+                    href={modalDoc.url}
                     download
                     className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-transform hover:scale-105"
                   >
@@ -349,7 +386,7 @@ function ProjectCard({ project }: { project: Project }) {
                   </a>
                 )}
                 <button
-                  onClick={() => setShowModal(false)}
+                  onClick={closeModal}
                   className="rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
                 >
                   ✕
@@ -357,9 +394,9 @@ function ProjectCard({ project }: { project: Project }) {
               </div>
             </div>
             <iframe
-              src={project.pdf}
+              src={modalDoc.url}
               className="h-[calc(100%-4rem)] w-full"
-              title={project.title}
+              title={modalDoc.title}
             />
           </div>
         </div>
