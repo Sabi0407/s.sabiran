@@ -22,16 +22,16 @@ const categories = [
     icon: User,
     projects: [
       {
-        title: "Mise en place Proxmox VE 9.1",
-        desc: "Installation et configuration d'un hyperviseur Proxmox VE 9.1 pour héberger des machines virtuelles, structurer l'infrastructure et centraliser l'administration de l'environnement.",
-        tags: ["Proxmox VE", "Virtualisation", "Hyperviseur", "Infrastructure", "Linux"],
-        pdf: "/s.sabiran/docs/proxmox-ve-9-1.pdf",
-      },
-      {
         title: "Mise en place d'Arch Linux avec environnement de bureau",
         desc: "Installation complète d'Arch Linux : configuration du terminal, disposition clavier français, partitionnement manuel des disques, installation du système de base et déploiement d'un environnement de bureau fonctionnel.",
         tags: ["Arch Linux", "Linux", "Terminal", "Partitionnement", "DE"],
         pdf: "/s.sabiran/docs/installation-arch-linux.pdf",
+      },
+      {
+        title: "Mise en place Proxmox VE 9.1",
+        desc: "Installation et configuration d'un hyperviseur Proxmox VE 9.1 pour héberger des machines virtuelles, structurer l'infrastructure et centraliser l'administration de l'environnement.",
+        tags: ["Proxmox VE", "Virtualisation", "Hyperviseur", "Infrastructure", "Linux"],
+        pdf: "/s.sabiran/docs/proxmox-ve-9-1.pdf",
       },
       {
         title: "Mise en place d'un serveur Samba",
