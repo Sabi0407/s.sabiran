@@ -51,6 +51,12 @@ const categories = [
         tags: ["Tailscale", "VPN", "Accès distant", "Réseau", "Sécurité"],
         pdf: "",
       },
+      {
+        title: "Déploiement de BentoPDF via Docker",
+        desc: "Installation et mise en service de BentoPDF en auto-hébergement avec Docker Compose sur Debian, incluant la préparation du dossier projet et le démarrage du conteneur.",
+        tags: ["BentoPDF", "Docker", "Docker Compose", "Debian", "Auto-hébergé"],
+        pdf: "/s.sabiran/docs/deploiement-bentopdf.pdf",
+      },
     ] as Project[],
   },
   {
