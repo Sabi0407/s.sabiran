@@ -22,15 +22,21 @@ const categories = [
     icon: User,
     projects: [
       {
+        title: "Mise en place Proxmox VE 9.1",
+        desc: "Installation et configuration d'un hyperviseur Proxmox VE 9.1 pour héberger des machines virtuelles, structurer l'infrastructure et centraliser l'administration de l'environnement.",
+        tags: ["Proxmox VE", "Virtualisation", "Hyperviseur", "Infrastructure", "Linux"],
+        pdf: "/s.sabiran/docs/proxmox-ve-9-1.pdf",
+      },
+      {
         title: "Mise en place d'Arch Linux avec environnement de bureau",
         desc: "Installation complète d'Arch Linux : configuration du terminal, disposition clavier français, partitionnement manuel des disques, installation du système de base et déploiement d'un environnement de bureau fonctionnel.",
         tags: ["Arch Linux", "Linux", "Terminal", "Partitionnement", "DE"],
         pdf: "/s.sabiran/docs/installation-arch-linux.pdf",
       },
       {
-        title: "Mise en place d'un serveur Samba et de Tailscale",
-        desc: "Installation et configuration d'un serveur Samba pour le partage de fichiers réseau et déploiement de Tailscale pour un VPN mesh sécurisé permettant un accès distant aux ressources internes.",
-        tags: ["Samba", "Tailscale", "VPN", "Partage de fichiers", "Réseau"],
+        title: "Mise en place d'un serveur Samba",
+        desc: "Installation et configuration d'un serveur Samba pour le partage de fichiers sur le réseau local, avec gestion des accès et des permissions utilisateurs.",
+        tags: ["Samba", "Partage de fichiers", "Réseau", "Permissions", "Linux"],
         pdf: "",
       },
       {
@@ -40,10 +46,10 @@ const categories = [
         pdf: "",
       },
       {
-        title: "Mise en place Proxmox VE 9.1",
-        desc: "Installation et configuration d'un hyperviseur Proxmox VE 9.1 pour héberger des machines virtuelles, structurer l'infrastructure et centraliser l'administration de l'environnement.",
-        tags: ["Proxmox VE", "Virtualisation", "Hyperviseur", "Infrastructure", "Linux"],
-        pdf: "/s.sabiran/docs/proxmox-ve-9-1.pdf",
+        title: "Mise en place de Tailscale",
+        desc: "Déploiement de Tailscale pour établir un accès distant sécurisé aux ressources internes via VPN mesh, avec gestion simple des machines autorisées.",
+        tags: ["Tailscale", "VPN", "Accès distant", "Réseau", "Sécurité"],
+        pdf: "",
       },
     ] as Project[],
   },
