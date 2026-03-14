@@ -37,7 +37,7 @@ const categories = [
         title: "Mise en place d'un serveur Samba",
         desc: "Installation et configuration d'un serveur Samba pour le partage de fichiers sur le réseau local, avec gestion des accès et des permissions utilisateurs.",
         tags: ["Samba", "Partage de fichiers", "Réseau", "Permissions", "Linux"],
-        pdf: "",
+        pdf: "/s.sabiran/docs/samba-server.pdf",
       },
       {
         title: "Mise en place de Jellyfin",
