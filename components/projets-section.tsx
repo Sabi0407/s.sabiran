@@ -166,7 +166,7 @@ const categories = [
         title: "Mise en place d'OpenSSL, Apache2 et redirection HTTPS",
         desc: "Configuration d'un environnement sécurisé en HTTPS sur deux machines virtuelles Linux : installation des paquets, génération de certificat SSL, configuration d'Apache2 et déploiement d'un site web.",
         tags: ["Apache2", "OpenSSL", "HTTPS", "SSL", "Linux"],
-        pdf: "",
+        pdf: "/s.sabiran/docs/tp-openssl-apache-https.pdf",
       },
       {
         title: "Mise en place d'un serveur GLPI et création de ticket",
