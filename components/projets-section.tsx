@@ -46,9 +46,9 @@ const categories = [
         pdf: "",
       },
       {
-        title: "Mise en place de Tailscale",
-        desc: "Déploiement de Tailscale pour établir un accès distant sécurisé aux ressources internes via VPN mesh, avec gestion simple des machines autorisées.",
-        tags: ["Tailscale", "VPN", "Accès distant", "Réseau", "Sécurité"],
+        title: "Mise en place proxy Caddy",
+        desc: "Mise en place d'un proxy reverse avec Caddy pour publier des services internes avec HTTPS automatique, gestion des hôtes et routage sécurisé.",
+        tags: ["Caddy", "Reverse Proxy", "HTTPS", "Réseau", "Sécurité"],
         pdf: "",
       },
       {
